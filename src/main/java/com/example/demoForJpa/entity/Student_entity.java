@@ -9,10 +9,12 @@ import jakarta.persistence.Id;
 public class Student_entity {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String StudentName;
 	private String StudentEmail;
 	private String StudentAddress;
+	
+	
 	public long getId() {
 		return id;
 	}

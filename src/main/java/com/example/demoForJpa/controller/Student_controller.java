@@ -24,8 +24,8 @@ public class Student_controller {
 	@Autowired
 	Student_repo studentrepo;
 	
-	@PostMapping("/api/students")
-	
+	@PostMapping("/api/student")
+	 
 	public ResponseEntity<Student_entity>saveStudent(@RequestBody Student_entity student) {
 		
 		 return new ResponseEntity<>(studentrepo.save(student),HttpStatus.CREATED);
@@ -37,7 +37,7 @@ public class Student_controller {
 		
 	}
 @GetMapping("/api/students/{id}")
-public ResponseEntity<Student_entity> getStudent(@PathVariable long id) {
+public ResponseEntity<Student_entity> getStudent(@PathVariable Long id) {
 	Optional<Student_entity> student= studentrepo.findById(id);
 	if(student.isPresent()) {
 		return new ResponseEntity<>(student.get(),HttpStatus.OK);
@@ -47,8 +47,8 @@ public ResponseEntity<Student_entity> getStudent(@PathVariable long id) {
 	}
 	
 }
-@PutMapping("/api/students/{id}")
-public ResponseEntity<Student_entity> getStudent(@PathVariable long id,@RequestBody Student_entity stud) {
+@PutMapping("/api/student/{id}")
+public ResponseEntity<Student_entity> getStudent(@PathVariable Long id,@RequestBody Student_entity stud) {
 	Optional<Student_entity> student= studentrepo.findById(id);
 	if(student.isPresent()) {
 		student.get().setStudentName(stud.getStudentName());
@@ -62,7 +62,7 @@ public ResponseEntity<Student_entity> getStudent(@PathVariable long id,@RequestB
 	
 }
 @DeleteMapping("/api/students/{id}")
-public ResponseEntity<Void>deleteStudent(@PathVariable long id) {
+public ResponseEntity<Void>deleteStudent(@PathVariable Long id) {
 	Optional<Student_entity> student= studentrepo.findById(id);
 	if(student.isPresent()) {
 		studentrepo.deleteById(id);
